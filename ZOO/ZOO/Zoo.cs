@@ -8,37 +8,31 @@ namespace ZOO
     public class Zoo
     {
         public string zooName;
-        public  List<Animal> animalList = new List<Animal>();
+        public List<Animal> animalList = new List<Animal>();
+        public Zoo CurrentZoo { get; set; }
 
-        
 
         public Zoo(string zooName)
         {
             this.zooName = zooName;
         }
 
-        public void FeedAnimal()
+
+
+        public void BringAnimal(Animal animal, Zoo zooName)
         {
-            foreach (var animal in animalList)
-            {
-                Console.WriteLine($"{animal.Species} {animal.AnimalName} is now eating {animal.FavoriteMeal}.");
-            }
-        }
-
-
-
-        public void BringAnimal(Animal animal,Zoo zooName)
-        {
-            animal.CurrentZoo = zooName;
+            // CurrentZoo = zooName;
             animalList.Add(animal);
         }
 
-        public void TransferAnimal(Animal animal, Zoo destinationZoo)
+        public void TransferAnimal(Animal animal, Zoo destinationZoo, Zoo formerZoo)
         {
-            
-            animal.CurrentZoo = destinationZoo;
+            CurrentZoo = formerZoo;
+            formerZoo.animalList.Remove(animal);
+            CurrentZoo = destinationZoo;
             destinationZoo.animalList.Add(animal);
-            Console.WriteLine($"{animal.Species} {animal.AnimalName} has been transferred to {destinationZoo.zooName}.");
+
+            Console.WriteLine($"{animal.Species} {animal.AnimalName} has been transferred from {formerZoo.zooName} to {destinationZoo.zooName}.");
         }
 
         public void ZooInfo()

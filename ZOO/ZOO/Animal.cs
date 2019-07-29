@@ -5,19 +5,20 @@ using System.Text;
 namespace ZOO
 {
     public enum FavoriteFood { Grass, Carrots, Meat, Milk, Bananas, Fish, Branches, Corn }
+    public enum AnimalTypes { Elephant, Gorilla, Lion, Cat, Crocodile, Bear, Snake, Giraffe, Zebra}
     public class Animal
     {
         private string animalName;
-        private string species;
+        private AnimalTypes species;
         private FavoriteFood favoriteFood;
-        public Zoo CurrentZoo { get; set; }
+       
 
         public string AnimalName
         {
             get { return animalName; }
             private set { this.animalName = value; }      //Animals can`t change name
         }
-        public string Species
+        public AnimalTypes Species
         {
             get { return species; }
             private set { this.species = value; }     //Animal can`t change species
@@ -31,13 +32,12 @@ namespace ZOO
 
 
 
-        public Animal(string species, string animalName, FavoriteFood favoriteFood/*, Zoo currentZoo*/)
+        public Animal(string animalName,AnimalTypes species,  FavoriteFood favoriteFood)
         {
             this.AnimalName = animalName;
             this.Species = species;
             this.FavoriteMeal = favoriteFood;
-            // this.CurrentZoo = currentZoo;
-            //currentZoo.animalList.Add(animalName);
+            
 
         }
 
